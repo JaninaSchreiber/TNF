@@ -1,0 +1,13 @@
+,algorithm,algtime,evalutations,totaltime
+0,hide-and-seek adaptive,0:00:42.503350,100.0,0:00:43.180918
+1,hide-and-seek geometric,0:00:12.865373,25.0,0:00:13.056392
+2,randomsearch ,0:00:04.805326,25.0,0:00:04.978176
+3,hide-and-seek adaptive,0:00:13.455799,25.0,0:00:13.646452
+4,improving hit-and-run ,0:00:21.562569,50.0,0:00:21.900356
+5,randomsearch ,0:00:07.482416,50.0,0:00:07.806827
+6,improving hit-and-run ,0:00:39.303637,100.0,0:00:39.953444
+7,hide-and-seek geometric,0:00:41.553524,100.0,0:00:42.221786
+8,improving hit-and-run ,0:00:12.587438,25.0,0:00:12.772660
+9,hide-and-seek geometric,0:00:21.901579,50.0,0:00:22.241124
+10,randomsearch ,0:00:13.867225,100.0,0:00:14.551672
+11,hide-and-seek adaptive,0:00:24.433130,50.0,0:00:24.797012
