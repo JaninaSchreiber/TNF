@@ -1,0 +1,73 @@
+EMEWS project template
+-----------------------
+
+You have just created an EMEWS project.
+
+This project is compatible with swift-t v. 1.3+. Earlier
+versions will NOT work.
+
+The project consists of the following directories:
+
+```
+  data/
+  ext/
+  etc/
+  scripts/
+  swift/
+  model/
+  README.md
+```
+The directories are intended to contain the following:
+
+ * `data` - model input etc. data
+ * `etc` - additional code used by EMEWS
+ * `scripts` - any necessary scripts (e.g. scripts to launch a model), excluding
+    scripts used to run the workflow.
+ * `swift` - swift code
+ * `model` - should contain the model itself
+
+The compiled PhysiCell model should be copied into the model directory and be named
+cancer-immune-EMEWS.
+
+Before running the algorithms make sure EMEWS is installed:
+	https://emews.github.io/
+	
+It is recommended to use the Spack package manager
+	https://spack.readthedocs.io/en/latest/
+	
+To set up PhysiCell:
+	~/cancer-immune/PhysiCell-src$ make -f Makefile-immune 
+	~/cancer-immune/PhysiCell-src$ cancer-immune-EMEWS2 config/PhysiCell_settings_immune.xml 
+
+If you have troubles running the project, check that the project is set up correctly. Here is a summary of commands to do so (see https://github.com/MathCancer/PhysiCell-EMEWS-2/tree/master/cancer-immune/PhysiCell-src):
+
+	make : compiles the current project. If no project has been defined, it first populates the cancer heterogeneity 2D sample project and compiles it
+
+	make : populates the indicated sample project. Use "make" to compile it.
+
+	<project_name> choices: template2D template3D biorobots-sample cancer-biorobots-sample heterogeneity-sample cancer-immune-sample
+
+	make clean : removes all .o files and the executable, so that the next "make" recompiles the entire project
+
+	make data-cleanup : clears out all simulation data
+
+	make reset : de-populates the sample project and returns to the original PhysiCell state. Use this when switching to a new PhysiCell sample project.
+ 
+To run the model exploration methods go to:
+
+	cd cancer-immune/EMEWS-scripts/swift/
+
+Open the file
+	
+	run_bas.sh  # for HNS and IHR
+	run_rs.sh   # for PRS
+	
+and change it according to your needs. You can set up the optimization strategy, cooling schedule, number of iterations. Moreover, the maximum Walltime, nodes, etc can be chosen. The script is commented and thus self explaining.
+
+Finally, run
+
+	./bas_workflow.sh <experimentname> ~/EMEWS-scripts/data/ga_params.json
+
+or 
+
+	./rs_workflow.sh <experimentname> ~/EMEWS-scripts/data/ga_params.json

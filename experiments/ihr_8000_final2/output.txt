@@ -1,0 +1,27 @@
+TURBINE-SLURM.SH
+
++ srun /usr/bin/tclsh8.6 /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/swift-t-swift_run_bas.FAZ.tic ihr_8000_final2 ../data/tnf_params.json -ni=20 -nv=3 -st=improving_hit-and-run -cs= -exe=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/spheroid_TNF -settings=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/PhysiCell_settings.xml -ga_parameters=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/tnf_params.json
+Parameters: 20,'/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/tnf_params.json', 'improving_hit-and-run', '{}'
+custom param {"user_parameters.time_add_tnf": 258.0, "user_parameters.duration_add_tnf": 18.0, "user_parameters.concentration_tnf": 0.29}
+custom param {"user_parameters.time_add_tnf": 254.0, "user_parameters.duration_add_tnf": 18.0, "user_parameters.concentration_tnf": 0.2984513303}
+custom param {"user_parameters.time_add_tnf": 258.0, "user_parameters.duration_add_tnf": 18.0, "user_parameters.concentration_tnf": 0.29}
+custom param {"user_parameters.time_add_tnf": 251.0, "user_parameters.duration_add_tnf": 18.0, "user_parameters.concentration_tnf": 0.2910460358}
+custom param {"user_parameters.time_add_tnf": 259.0, "user_parameters.duration_add_tnf": 19.0, "user_parameters.concentration_tnf": 0.29758839989999997}
+custom param {"user_parameters.time_add_tnf": 259.0, "user_parameters.duration_add_tnf": 19.0, "user_parameters.concentration_tnf": 0.29758839989999997}
+custom param {"user_parameters.time_add_tnf": 268.0, "user_parameters.duration_add_tnf": 19.0, "user_parameters.concentration_tnf": 0.30480866199999995}
+custom param {"user_parameters.time_add_tnf": 268.0, "user_parameters.duration_add_tnf": 19.0, "user_parameters.concentration_tnf": 0.30480866199999995}
+custom param {"user_parameters.time_add_tnf": 264.0, "user_parameters.duration_add_tnf": 19.0, "user_parameters.concentration_tnf": 0.30377948409999994}
+custom param {"user_parameters.time_add_tnf": 268.0, "user_parameters.duration_add_tnf": 18.0, "user_parameters.concentration_tnf": 0.30480866199999995}
+custom param {"user_parameters.time_add_tnf": 261.0, "user_parameters.duration_add_tnf": 20.0, "user_parameters.concentration_tnf": 0.29892785019999996}
+custom param {"user_parameters.time_add_tnf": 261.0, "user_parameters.duration_add_tnf": 20.0, "user_parameters.concentration_tnf": 0.29892785019999996}
+custom param {"user_parameters.time_add_tnf": 262.0, "user_parameters.duration_add_tnf": 19.0, "user_parameters.concentration_tnf": 0.29682383999999995}
+custom param {"user_parameters.time_add_tnf": 261.0, "user_parameters.duration_add_tnf": 20.0, "user_parameters.concentration_tnf": 0.29892785019999996}
+custom param {"user_parameters.time_add_tnf": 269.0, "user_parameters.duration_add_tnf": 20.0, "user_parameters.concentration_tnf": 0.29892785019999996}
+custom param {"user_parameters.time_add_tnf": 261.0, "user_parameters.duration_add_tnf": 20.0, "user_parameters.concentration_tnf": 0.3030742875}
+custom param {"user_parameters.time_add_tnf": 261.0, "user_parameters.duration_add_tnf": 19.0, "user_parameters.concentration_tnf": 0.30232777399999994}
+custom param {"user_parameters.time_add_tnf": 261.0, "user_parameters.duration_add_tnf": 20.0, "user_parameters.concentration_tnf": 0.29892785019999996}
+custom param {"user_parameters.time_add_tnf": 261.0, "user_parameters.duration_add_tnf": 19.0, "user_parameters.concentration_tnf": 0.30640492459999996}
+custom param {"user_parameters.time_add_tnf": 261.0, "user_parameters.duration_add_tnf": 20.0, "user_parameters.concentration_tnf": 0.30194297579999996}
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 12854581.0 ON s18r1b17 CANCELLED AT 2020-11-30T06:33:49 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 12854581 ON s18r1b17 CANCELLED AT 2020-11-30T06:33:49 DUE TO TIME LIMIT ***

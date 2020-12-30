@@ -1,0 +1,1527 @@
+Terminale, die in Grammatik unbenutzt sind
+
+   NODE
+
+
+Grammatik
+
+    0 $accept: translation_unit $end
+
+    1 translation_unit: decl
+    2                 | translation_unit decl
+
+    3 decl: var_decl
+    4     | runconfig_decl
+    5     | node_attr_decl
+    6     | ';'
+
+    7 runconfig_decl: SYMBOL '=' expression ';'
+
+    8 node_attr_decl: SYMBOL '.' SYMBOL '=' expression ';'
+    9               | symbol_istate_list '.' SYMBOL '=' istate_expression_list ';'
+
+   10 symbol_istate_list: '[' symbol_list ']'
+
+   11 symbol_list: SYMBOL
+   12            | symbol_list ',' SYMBOL
+
+   13 istate_expression_list: istate_expression
+   14                       | istate_expression_list ',' istate_expression
+
+   15 istate_expression: primary_expression '[' expression_list ']'
+
+   16 expression_list: primary_expression
+   17                | expression_list ',' primary_expression
+
+   18 var_decl: VARIABLE '=' expression ';'
+
+   19 primary_expression: INTEGER
+   20                   | DOUBLE
+   21                   | VARIABLE
+   22                   | '(' expression ')'
+
+   23 argument_expression_list: expression
+   24                         | argument_expression_list ',' expression
+
+   25 postfix_expression: primary_expression
+   26                   | SYMBOL '(' argument_expression_list ')'
+   27                   | SYMBOL '(' ')'
+
+   28 unary_expression: postfix_expression
+   29                 | '+' unary_expression
+   30                 | '-' unary_expression
+   31                 | '!' unary_expression
+   32                 | LOGNOT unary_expression
+
+   33 multiplicative_expression: unary_expression
+   34                          | multiplicative_expression '*' unary_expression
+   35                          | multiplicative_expression '/' unary_expression
+
+   36 additive_expression: multiplicative_expression
+   37                    | additive_expression '+' multiplicative_expression
+   38                    | additive_expression '-' multiplicative_expression
+
+   39 relational_expression: additive_expression
+   40                      | relational_expression '<' additive_expression
+   41                      | relational_expression '>' additive_expression
+   42                      | relational_expression LTEQ additive_expression
+   43                      | relational_expression GTEQ additive_expression
+
+   44 equality_expression: relational_expression
+   45                    | equality_expression EQUAL relational_expression
+   46                    | equality_expression NOT_EQUAL relational_expression
+
+   47 logical_and_expression: equality_expression
+   48                       | logical_and_expression LOGAND equality_expression
+
+   49 logical_or_expression: logical_and_expression
+   50                      | logical_or_expression LOGOR logical_and_expression
+
+   51 logical_xor_expression: logical_or_expression
+   52                       | logical_xor_expression LOGXOR logical_or_expression
+   53                       | logical_xor_expression '^' logical_or_expression
+
+   54 conditional_expression: logical_xor_expression
+   55                       | logical_xor_expression '?' expression ':' conditional_expression
+
+   56 expression: conditional_expression
+
+
+Terminale und die Regeln, in denen sie verwendet werden
+
+$end (0) 0
+'!' (33) 31
+'(' (40) 22 26 27
+')' (41) 22 26 27
+'*' (42) 34
+'+' (43) 29 37
+',' (44) 12 14 17 24
+'-' (45) 30 38
+'.' (46) 8 9
+'/' (47) 35
+':' (58) 55
+';' (59) 6 7 8 9 18
+'<' (60) 40
+'=' (61) 7 8 9 18
+'>' (62) 41
+'?' (63) 55
+'[' (91) 10 15
+']' (93) 10 15
+'^' (94) 53
+error (256)
+VARIABLE (258) 18 21
+SYMBOL (259) 7 8 9 11 12 26 27
+DOUBLE (260) 20
+INTEGER (261) 19
+LOGAND (262) 48
+LOGOR (263) 50
+LOGXOR (264) 52
+LOGNOT (265) 32
+EQUAL (266) 45
+NOT_EQUAL (267) 46
+NODE (268)
+GTEQ (269) 43
+LTEQ (270) 42
+
+
+Nicht-Terminal und die Regeln, in denen sie verwendet werden
+
+$accept (34)
+    auf der linken Seite: 0
+translation_unit (35)
+    auf der linken Seite: 1 2, auf der rechten Seite: 0 2
+decl (36)
+    auf der linken Seite: 3 4 5 6, auf der rechten Seite: 1 2
+runconfig_decl (37)
+    auf der linken Seite: 7, auf der rechten Seite: 4
+node_attr_decl (38)
+    auf der linken Seite: 8 9, auf der rechten Seite: 5
+symbol_istate_list (39)
+    auf der linken Seite: 10, auf der rechten Seite: 9
+symbol_list (40)
+    auf der linken Seite: 11 12, auf der rechten Seite: 10 12
+istate_expression_list (41)
+    auf der linken Seite: 13 14, auf der rechten Seite: 9 14
+istate_expression (42)
+    auf der linken Seite: 15, auf der rechten Seite: 13 14
+expression_list (43)
+    auf der linken Seite: 16 17, auf der rechten Seite: 15 17
+var_decl (44)
+    auf der linken Seite: 18, auf der rechten Seite: 3
+primary_expression (45)
+    auf der linken Seite: 19 20 21 22, auf der rechten Seite: 15 16
+    17 25
+argument_expression_list (46)
+    auf der linken Seite: 23 24, auf der rechten Seite: 24 26
+postfix_expression (47)
+    auf der linken Seite: 25 26 27, auf der rechten Seite: 28
+unary_expression (48)
+    auf der linken Seite: 28 29 30 31 32, auf der rechten Seite: 29
+    30 31 32 33 34 35
+multiplicative_expression (49)
+    auf der linken Seite: 33 34 35, auf der rechten Seite: 34 35 36
+    37 38
+additive_expression (50)
+    auf der linken Seite: 36 37 38, auf der rechten Seite: 37 38 39
+    40 41 42 43
+relational_expression (51)
+    auf der linken Seite: 39 40 41 42 43, auf der rechten Seite: 40
+    41 42 43 44 45 46
+equality_expression (52)
+    auf der linken Seite: 44 45 46, auf der rechten Seite: 45 46 47
+    48
+logical_and_expression (53)
+    auf der linken Seite: 47 48, auf der rechten Seite: 48 49 50
+logical_or_expression (54)
+    auf der linken Seite: 49 50, auf der rechten Seite: 50 51 52 53
+logical_xor_expression (55)
+    auf der linken Seite: 51 52 53, auf der rechten Seite: 52 53 54
+    55
+conditional_expression (56)
+    auf der linken Seite: 54 55, auf der rechten Seite: 55 56
+expression (57)
+    auf der linken Seite: 56, auf der rechten Seite: 7 8 18 22 23 24
+    55
+
+
+Zustand 0
+
+    0 $accept: . translation_unit $end
+
+    VARIABLE  schiebe und gehe zu Zustand 1 über
+    SYMBOL    schiebe und gehe zu Zustand 2 über
+    ';'       schiebe und gehe zu Zustand 3 über
+    '['       schiebe und gehe zu Zustand 4 über
+
+    translation_unit    gehe zu Zustand 5 über
+    decl                gehe zu Zustand 6 über
+    runconfig_decl      gehe zu Zustand 7 über
+    node_attr_decl      gehe zu Zustand 8 über
+    symbol_istate_list  gehe zu Zustand 9 über
+    var_decl            gehe zu Zustand 10 über
+
+
+Zustand 1
+
+   18 var_decl: VARIABLE . '=' expression ';'
+
+    '='  schiebe und gehe zu Zustand 11 über
+
+
+Zustand 2
+
+    7 runconfig_decl: SYMBOL . '=' expression ';'
+    8 node_attr_decl: SYMBOL . '.' SYMBOL '=' expression ';'
+
+    '='  schiebe und gehe zu Zustand 12 über
+    '.'  schiebe und gehe zu Zustand 13 über
+
+
+Zustand 3
+
+    6 decl: ';' .
+
+    $default  reduziere mit Regel 6 (decl)
+
+
+Zustand 4
+
+   10 symbol_istate_list: '[' . symbol_list ']'
+
+    SYMBOL  schiebe und gehe zu Zustand 14 über
+
+    symbol_list  gehe zu Zustand 15 über
+
+
+Zustand 5
+
+    0 $accept: translation_unit . $end
+    2 translation_unit: translation_unit . decl
+
+    $end      schiebe und gehe zu Zustand 16 über
+    VARIABLE  schiebe und gehe zu Zustand 1 über
+    SYMBOL    schiebe und gehe zu Zustand 2 über
+    ';'       schiebe und gehe zu Zustand 3 über
+    '['       schiebe und gehe zu Zustand 4 über
+
+    decl                gehe zu Zustand 17 über
+    runconfig_decl      gehe zu Zustand 7 über
+    node_attr_decl      gehe zu Zustand 8 über
+    symbol_istate_list  gehe zu Zustand 9 über
+    var_decl            gehe zu Zustand 10 über
+
+
+Zustand 6
+
+    1 translation_unit: decl .
+
+    $default  reduziere mit Regel 1 (translation_unit)
+
+
+Zustand 7
+
+    4 decl: runconfig_decl .
+
+    $default  reduziere mit Regel 4 (decl)
+
+
+Zustand 8
+
+    5 decl: node_attr_decl .
+
+    $default  reduziere mit Regel 5 (decl)
+
+
+Zustand 9
+
+    9 node_attr_decl: symbol_istate_list . '.' SYMBOL '=' istate_expression_list ';'
+
+    '.'  schiebe und gehe zu Zustand 18 über
+
+
+Zustand 10
+
+    3 decl: var_decl .
+
+    $default  reduziere mit Regel 3 (decl)
+
+
+Zustand 11
+
+   18 var_decl: VARIABLE '=' . expression ';'
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 36 über
+    logical_xor_expression     gehe zu Zustand 37 über
+    conditional_expression     gehe zu Zustand 38 über
+    expression                 gehe zu Zustand 39 über
+
+
+Zustand 12
+
+    7 runconfig_decl: SYMBOL '=' . expression ';'
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 36 über
+    logical_xor_expression     gehe zu Zustand 37 über
+    conditional_expression     gehe zu Zustand 38 über
+    expression                 gehe zu Zustand 40 über
+
+
+Zustand 13
+
+    8 node_attr_decl: SYMBOL '.' . SYMBOL '=' expression ';'
+
+    SYMBOL  schiebe und gehe zu Zustand 41 über
+
+
+Zustand 14
+
+   11 symbol_list: SYMBOL .
+
+    $default  reduziere mit Regel 11 (symbol_list)
+
+
+Zustand 15
+
+   10 symbol_istate_list: '[' symbol_list . ']'
+   12 symbol_list: symbol_list . ',' SYMBOL
+
+    ']'  schiebe und gehe zu Zustand 42 über
+    ','  schiebe und gehe zu Zustand 43 über
+
+
+Zustand 16
+
+    0 $accept: translation_unit $end .
+
+    $default  annehmen
+
+
+Zustand 17
+
+    2 translation_unit: translation_unit decl .
+
+    $default  reduziere mit Regel 2 (translation_unit)
+
+
+Zustand 18
+
+    9 node_attr_decl: symbol_istate_list '.' . SYMBOL '=' istate_expression_list ';'
+
+    SYMBOL  schiebe und gehe zu Zustand 44 über
+
+
+Zustand 19
+
+   21 primary_expression: VARIABLE .
+
+    $default  reduziere mit Regel 21 (primary_expression)
+
+
+Zustand 20
+
+   26 postfix_expression: SYMBOL . '(' argument_expression_list ')'
+   27                   | SYMBOL . '(' ')'
+
+    '('  schiebe und gehe zu Zustand 45 über
+
+
+Zustand 21
+
+   20 primary_expression: DOUBLE .
+
+    $default  reduziere mit Regel 20 (primary_expression)
+
+
+Zustand 22
+
+   19 primary_expression: INTEGER .
+
+    $default  reduziere mit Regel 19 (primary_expression)
+
+
+Zustand 23
+
+   32 unary_expression: LOGNOT . unary_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression  gehe zu Zustand 28 über
+    postfix_expression  gehe zu Zustand 29 über
+    unary_expression    gehe zu Zustand 46 über
+
+
+Zustand 24
+
+   22 primary_expression: '(' . expression ')'
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 36 über
+    logical_xor_expression     gehe zu Zustand 37 über
+    conditional_expression     gehe zu Zustand 38 über
+    expression                 gehe zu Zustand 47 über
+
+
+Zustand 25
+
+   29 unary_expression: '+' . unary_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression  gehe zu Zustand 28 über
+    postfix_expression  gehe zu Zustand 29 über
+    unary_expression    gehe zu Zustand 48 über
+
+
+Zustand 26
+
+   30 unary_expression: '-' . unary_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression  gehe zu Zustand 28 über
+    postfix_expression  gehe zu Zustand 29 über
+    unary_expression    gehe zu Zustand 49 über
+
+
+Zustand 27
+
+   31 unary_expression: '!' . unary_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression  gehe zu Zustand 28 über
+    postfix_expression  gehe zu Zustand 29 über
+    unary_expression    gehe zu Zustand 50 über
+
+
+Zustand 28
+
+   25 postfix_expression: primary_expression .
+
+    $default  reduziere mit Regel 25 (postfix_expression)
+
+
+Zustand 29
+
+   28 unary_expression: postfix_expression .
+
+    $default  reduziere mit Regel 28 (unary_expression)
+
+
+Zustand 30
+
+   33 multiplicative_expression: unary_expression .
+
+    $default  reduziere mit Regel 33 (multiplicative_expression)
+
+
+Zustand 31
+
+   34 multiplicative_expression: multiplicative_expression . '*' unary_expression
+   35                          | multiplicative_expression . '/' unary_expression
+   36 additive_expression: multiplicative_expression .
+
+    '*'  schiebe und gehe zu Zustand 51 über
+    '/'  schiebe und gehe zu Zustand 52 über
+
+    $default  reduziere mit Regel 36 (additive_expression)
+
+
+Zustand 32
+
+   37 additive_expression: additive_expression . '+' multiplicative_expression
+   38                    | additive_expression . '-' multiplicative_expression
+   39 relational_expression: additive_expression .
+
+    '+'  schiebe und gehe zu Zustand 53 über
+    '-'  schiebe und gehe zu Zustand 54 über
+
+    $default  reduziere mit Regel 39 (relational_expression)
+
+
+Zustand 33
+
+   40 relational_expression: relational_expression . '<' additive_expression
+   41                      | relational_expression . '>' additive_expression
+   42                      | relational_expression . LTEQ additive_expression
+   43                      | relational_expression . GTEQ additive_expression
+   44 equality_expression: relational_expression .
+
+    GTEQ  schiebe und gehe zu Zustand 55 über
+    LTEQ  schiebe und gehe zu Zustand 56 über
+    '<'   schiebe und gehe zu Zustand 57 über
+    '>'   schiebe und gehe zu Zustand 58 über
+
+    $default  reduziere mit Regel 44 (equality_expression)
+
+
+Zustand 34
+
+   45 equality_expression: equality_expression . EQUAL relational_expression
+   46                    | equality_expression . NOT_EQUAL relational_expression
+   47 logical_and_expression: equality_expression .
+
+    EQUAL      schiebe und gehe zu Zustand 59 über
+    NOT_EQUAL  schiebe und gehe zu Zustand 60 über
+
+    $default  reduziere mit Regel 47 (logical_and_expression)
+
+
+Zustand 35
+
+   48 logical_and_expression: logical_and_expression . LOGAND equality_expression
+   49 logical_or_expression: logical_and_expression .
+
+    LOGAND  schiebe und gehe zu Zustand 61 über
+
+    $default  reduziere mit Regel 49 (logical_or_expression)
+
+
+Zustand 36
+
+   50 logical_or_expression: logical_or_expression . LOGOR logical_and_expression
+   51 logical_xor_expression: logical_or_expression .
+
+    LOGOR  schiebe und gehe zu Zustand 62 über
+
+    $default  reduziere mit Regel 51 (logical_xor_expression)
+
+
+Zustand 37
+
+   52 logical_xor_expression: logical_xor_expression . LOGXOR logical_or_expression
+   53                       | logical_xor_expression . '^' logical_or_expression
+   54 conditional_expression: logical_xor_expression .
+   55                       | logical_xor_expression . '?' expression ':' conditional_expression
+
+    LOGXOR  schiebe und gehe zu Zustand 63 über
+    '^'     schiebe und gehe zu Zustand 64 über
+    '?'     schiebe und gehe zu Zustand 65 über
+
+    $default  reduziere mit Regel 54 (conditional_expression)
+
+
+Zustand 38
+
+   56 expression: conditional_expression .
+
+    $default  reduziere mit Regel 56 (expression)
+
+
+Zustand 39
+
+   18 var_decl: VARIABLE '=' expression . ';'
+
+    ';'  schiebe und gehe zu Zustand 66 über
+
+
+Zustand 40
+
+    7 runconfig_decl: SYMBOL '=' expression . ';'
+
+    ';'  schiebe und gehe zu Zustand 67 über
+
+
+Zustand 41
+
+    8 node_attr_decl: SYMBOL '.' SYMBOL . '=' expression ';'
+
+    '='  schiebe und gehe zu Zustand 68 über
+
+
+Zustand 42
+
+   10 symbol_istate_list: '[' symbol_list ']' .
+
+    $default  reduziere mit Regel 10 (symbol_istate_list)
+
+
+Zustand 43
+
+   12 symbol_list: symbol_list ',' . SYMBOL
+
+    SYMBOL  schiebe und gehe zu Zustand 69 über
+
+
+Zustand 44
+
+    9 node_attr_decl: symbol_istate_list '.' SYMBOL . '=' istate_expression_list ';'
+
+    '='  schiebe und gehe zu Zustand 70 über
+
+
+Zustand 45
+
+   26 postfix_expression: SYMBOL '(' . argument_expression_list ')'
+   27                   | SYMBOL '(' . ')'
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    ')'       schiebe und gehe zu Zustand 71 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    argument_expression_list   gehe zu Zustand 72 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 36 über
+    logical_xor_expression     gehe zu Zustand 37 über
+    conditional_expression     gehe zu Zustand 38 über
+    expression                 gehe zu Zustand 73 über
+
+
+Zustand 46
+
+   32 unary_expression: LOGNOT unary_expression .
+
+    $default  reduziere mit Regel 32 (unary_expression)
+
+
+Zustand 47
+
+   22 primary_expression: '(' expression . ')'
+
+    ')'  schiebe und gehe zu Zustand 74 über
+
+
+Zustand 48
+
+   29 unary_expression: '+' unary_expression .
+
+    $default  reduziere mit Regel 29 (unary_expression)
+
+
+Zustand 49
+
+   30 unary_expression: '-' unary_expression .
+
+    $default  reduziere mit Regel 30 (unary_expression)
+
+
+Zustand 50
+
+   31 unary_expression: '!' unary_expression .
+
+    $default  reduziere mit Regel 31 (unary_expression)
+
+
+Zustand 51
+
+   34 multiplicative_expression: multiplicative_expression '*' . unary_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression  gehe zu Zustand 28 über
+    postfix_expression  gehe zu Zustand 29 über
+    unary_expression    gehe zu Zustand 75 über
+
+
+Zustand 52
+
+   35 multiplicative_expression: multiplicative_expression '/' . unary_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression  gehe zu Zustand 28 über
+    postfix_expression  gehe zu Zustand 29 über
+    unary_expression    gehe zu Zustand 76 über
+
+
+Zustand 53
+
+   37 additive_expression: additive_expression '+' . multiplicative_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 77 über
+
+
+Zustand 54
+
+   38 additive_expression: additive_expression '-' . multiplicative_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 78 über
+
+
+Zustand 55
+
+   43 relational_expression: relational_expression GTEQ . additive_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 79 über
+
+
+Zustand 56
+
+   42 relational_expression: relational_expression LTEQ . additive_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 80 über
+
+
+Zustand 57
+
+   40 relational_expression: relational_expression '<' . additive_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 81 über
+
+
+Zustand 58
+
+   41 relational_expression: relational_expression '>' . additive_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 82 über
+
+
+Zustand 59
+
+   45 equality_expression: equality_expression EQUAL . relational_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 83 über
+
+
+Zustand 60
+
+   46 equality_expression: equality_expression NOT_EQUAL . relational_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 84 über
+
+
+Zustand 61
+
+   48 logical_and_expression: logical_and_expression LOGAND . equality_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 85 über
+
+
+Zustand 62
+
+   50 logical_or_expression: logical_or_expression LOGOR . logical_and_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 86 über
+
+
+Zustand 63
+
+   52 logical_xor_expression: logical_xor_expression LOGXOR . logical_or_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 87 über
+
+
+Zustand 64
+
+   53 logical_xor_expression: logical_xor_expression '^' . logical_or_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 88 über
+
+
+Zustand 65
+
+   55 conditional_expression: logical_xor_expression '?' . expression ':' conditional_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 36 über
+    logical_xor_expression     gehe zu Zustand 37 über
+    conditional_expression     gehe zu Zustand 38 über
+    expression                 gehe zu Zustand 89 über
+
+
+Zustand 66
+
+   18 var_decl: VARIABLE '=' expression ';' .
+
+    $default  reduziere mit Regel 18 (var_decl)
+
+
+Zustand 67
+
+    7 runconfig_decl: SYMBOL '=' expression ';' .
+
+    $default  reduziere mit Regel 7 (runconfig_decl)
+
+
+Zustand 68
+
+    8 node_attr_decl: SYMBOL '.' SYMBOL '=' . expression ';'
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 36 über
+    logical_xor_expression     gehe zu Zustand 37 über
+    conditional_expression     gehe zu Zustand 38 über
+    expression                 gehe zu Zustand 90 über
+
+
+Zustand 69
+
+   12 symbol_list: symbol_list ',' SYMBOL .
+
+    $default  reduziere mit Regel 12 (symbol_list)
+
+
+Zustand 70
+
+    9 node_attr_decl: symbol_istate_list '.' SYMBOL '=' . istate_expression_list ';'
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    '('       schiebe und gehe zu Zustand 24 über
+
+    istate_expression_list  gehe zu Zustand 91 über
+    istate_expression       gehe zu Zustand 92 über
+    primary_expression      gehe zu Zustand 93 über
+
+
+Zustand 71
+
+   27 postfix_expression: SYMBOL '(' ')' .
+
+    $default  reduziere mit Regel 27 (postfix_expression)
+
+
+Zustand 72
+
+   24 argument_expression_list: argument_expression_list . ',' expression
+   26 postfix_expression: SYMBOL '(' argument_expression_list . ')'
+
+    ','  schiebe und gehe zu Zustand 94 über
+    ')'  schiebe und gehe zu Zustand 95 über
+
+
+Zustand 73
+
+   23 argument_expression_list: expression .
+
+    $default  reduziere mit Regel 23 (argument_expression_list)
+
+
+Zustand 74
+
+   22 primary_expression: '(' expression ')' .
+
+    $default  reduziere mit Regel 22 (primary_expression)
+
+
+Zustand 75
+
+   34 multiplicative_expression: multiplicative_expression '*' unary_expression .
+
+    $default  reduziere mit Regel 34 (multiplicative_expression)
+
+
+Zustand 76
+
+   35 multiplicative_expression: multiplicative_expression '/' unary_expression .
+
+    $default  reduziere mit Regel 35 (multiplicative_expression)
+
+
+Zustand 77
+
+   34 multiplicative_expression: multiplicative_expression . '*' unary_expression
+   35                          | multiplicative_expression . '/' unary_expression
+   37 additive_expression: additive_expression '+' multiplicative_expression .
+
+    '*'  schiebe und gehe zu Zustand 51 über
+    '/'  schiebe und gehe zu Zustand 52 über
+
+    $default  reduziere mit Regel 37 (additive_expression)
+
+
+Zustand 78
+
+   34 multiplicative_expression: multiplicative_expression . '*' unary_expression
+   35                          | multiplicative_expression . '/' unary_expression
+   38 additive_expression: additive_expression '-' multiplicative_expression .
+
+    '*'  schiebe und gehe zu Zustand 51 über
+    '/'  schiebe und gehe zu Zustand 52 über
+
+    $default  reduziere mit Regel 38 (additive_expression)
+
+
+Zustand 79
+
+   37 additive_expression: additive_expression . '+' multiplicative_expression
+   38                    | additive_expression . '-' multiplicative_expression
+   43 relational_expression: relational_expression GTEQ additive_expression .
+
+    '+'  schiebe und gehe zu Zustand 53 über
+    '-'  schiebe und gehe zu Zustand 54 über
+
+    $default  reduziere mit Regel 43 (relational_expression)
+
+
+Zustand 80
+
+   37 additive_expression: additive_expression . '+' multiplicative_expression
+   38                    | additive_expression . '-' multiplicative_expression
+   42 relational_expression: relational_expression LTEQ additive_expression .
+
+    '+'  schiebe und gehe zu Zustand 53 über
+    '-'  schiebe und gehe zu Zustand 54 über
+
+    $default  reduziere mit Regel 42 (relational_expression)
+
+
+Zustand 81
+
+   37 additive_expression: additive_expression . '+' multiplicative_expression
+   38                    | additive_expression . '-' multiplicative_expression
+   40 relational_expression: relational_expression '<' additive_expression .
+
+    '+'  schiebe und gehe zu Zustand 53 über
+    '-'  schiebe und gehe zu Zustand 54 über
+
+    $default  reduziere mit Regel 40 (relational_expression)
+
+
+Zustand 82
+
+   37 additive_expression: additive_expression . '+' multiplicative_expression
+   38                    | additive_expression . '-' multiplicative_expression
+   41 relational_expression: relational_expression '>' additive_expression .
+
+    '+'  schiebe und gehe zu Zustand 53 über
+    '-'  schiebe und gehe zu Zustand 54 über
+
+    $default  reduziere mit Regel 41 (relational_expression)
+
+
+Zustand 83
+
+   40 relational_expression: relational_expression . '<' additive_expression
+   41                      | relational_expression . '>' additive_expression
+   42                      | relational_expression . LTEQ additive_expression
+   43                      | relational_expression . GTEQ additive_expression
+   45 equality_expression: equality_expression EQUAL relational_expression .
+
+    GTEQ  schiebe und gehe zu Zustand 55 über
+    LTEQ  schiebe und gehe zu Zustand 56 über
+    '<'   schiebe und gehe zu Zustand 57 über
+    '>'   schiebe und gehe zu Zustand 58 über
+
+    $default  reduziere mit Regel 45 (equality_expression)
+
+
+Zustand 84
+
+   40 relational_expression: relational_expression . '<' additive_expression
+   41                      | relational_expression . '>' additive_expression
+   42                      | relational_expression . LTEQ additive_expression
+   43                      | relational_expression . GTEQ additive_expression
+   46 equality_expression: equality_expression NOT_EQUAL relational_expression .
+
+    GTEQ  schiebe und gehe zu Zustand 55 über
+    LTEQ  schiebe und gehe zu Zustand 56 über
+    '<'   schiebe und gehe zu Zustand 57 über
+    '>'   schiebe und gehe zu Zustand 58 über
+
+    $default  reduziere mit Regel 46 (equality_expression)
+
+
+Zustand 85
+
+   45 equality_expression: equality_expression . EQUAL relational_expression
+   46                    | equality_expression . NOT_EQUAL relational_expression
+   48 logical_and_expression: logical_and_expression LOGAND equality_expression .
+
+    EQUAL      schiebe und gehe zu Zustand 59 über
+    NOT_EQUAL  schiebe und gehe zu Zustand 60 über
+
+    $default  reduziere mit Regel 48 (logical_and_expression)
+
+
+Zustand 86
+
+   48 logical_and_expression: logical_and_expression . LOGAND equality_expression
+   50 logical_or_expression: logical_or_expression LOGOR logical_and_expression .
+
+    LOGAND  schiebe und gehe zu Zustand 61 über
+
+    $default  reduziere mit Regel 50 (logical_or_expression)
+
+
+Zustand 87
+
+   50 logical_or_expression: logical_or_expression . LOGOR logical_and_expression
+   52 logical_xor_expression: logical_xor_expression LOGXOR logical_or_expression .
+
+    LOGOR  schiebe und gehe zu Zustand 62 über
+
+    $default  reduziere mit Regel 52 (logical_xor_expression)
+
+
+Zustand 88
+
+   50 logical_or_expression: logical_or_expression . LOGOR logical_and_expression
+   53 logical_xor_expression: logical_xor_expression '^' logical_or_expression .
+
+    LOGOR  schiebe und gehe zu Zustand 62 über
+
+    $default  reduziere mit Regel 53 (logical_xor_expression)
+
+
+Zustand 89
+
+   55 conditional_expression: logical_xor_expression '?' expression . ':' conditional_expression
+
+    ':'  schiebe und gehe zu Zustand 96 über
+
+
+Zustand 90
+
+    8 node_attr_decl: SYMBOL '.' SYMBOL '=' expression . ';'
+
+    ';'  schiebe und gehe zu Zustand 97 über
+
+
+Zustand 91
+
+    9 node_attr_decl: symbol_istate_list '.' SYMBOL '=' istate_expression_list . ';'
+   14 istate_expression_list: istate_expression_list . ',' istate_expression
+
+    ';'  schiebe und gehe zu Zustand 98 über
+    ','  schiebe und gehe zu Zustand 99 über
+
+
+Zustand 92
+
+   13 istate_expression_list: istate_expression .
+
+    $default  reduziere mit Regel 13 (istate_expression_list)
+
+
+Zustand 93
+
+   15 istate_expression: primary_expression . '[' expression_list ']'
+
+    '['  schiebe und gehe zu Zustand 100 über
+
+
+Zustand 94
+
+   24 argument_expression_list: argument_expression_list ',' . expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 36 über
+    logical_xor_expression     gehe zu Zustand 37 über
+    conditional_expression     gehe zu Zustand 38 über
+    expression                 gehe zu Zustand 101 über
+
+
+Zustand 95
+
+   26 postfix_expression: SYMBOL '(' argument_expression_list ')' .
+
+    $default  reduziere mit Regel 26 (postfix_expression)
+
+
+Zustand 96
+
+   55 conditional_expression: logical_xor_expression '?' expression ':' . conditional_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    SYMBOL    schiebe und gehe zu Zustand 20 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    LOGNOT    schiebe und gehe zu Zustand 23 über
+    '('       schiebe und gehe zu Zustand 24 über
+    '+'       schiebe und gehe zu Zustand 25 über
+    '-'       schiebe und gehe zu Zustand 26 über
+    '!'       schiebe und gehe zu Zustand 27 über
+
+    primary_expression         gehe zu Zustand 28 über
+    postfix_expression         gehe zu Zustand 29 über
+    unary_expression           gehe zu Zustand 30 über
+    multiplicative_expression  gehe zu Zustand 31 über
+    additive_expression        gehe zu Zustand 32 über
+    relational_expression      gehe zu Zustand 33 über
+    equality_expression        gehe zu Zustand 34 über
+    logical_and_expression     gehe zu Zustand 35 über
+    logical_or_expression      gehe zu Zustand 36 über
+    logical_xor_expression     gehe zu Zustand 37 über
+    conditional_expression     gehe zu Zustand 102 über
+
+
+Zustand 97
+
+    8 node_attr_decl: SYMBOL '.' SYMBOL '=' expression ';' .
+
+    $default  reduziere mit Regel 8 (node_attr_decl)
+
+
+Zustand 98
+
+    9 node_attr_decl: symbol_istate_list '.' SYMBOL '=' istate_expression_list ';' .
+
+    $default  reduziere mit Regel 9 (node_attr_decl)
+
+
+Zustand 99
+
+   14 istate_expression_list: istate_expression_list ',' . istate_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    '('       schiebe und gehe zu Zustand 24 über
+
+    istate_expression   gehe zu Zustand 103 über
+    primary_expression  gehe zu Zustand 93 über
+
+
+Zustand 100
+
+   15 istate_expression: primary_expression '[' . expression_list ']'
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    '('       schiebe und gehe zu Zustand 24 über
+
+    expression_list     gehe zu Zustand 104 über
+    primary_expression  gehe zu Zustand 105 über
+
+
+Zustand 101
+
+   24 argument_expression_list: argument_expression_list ',' expression .
+
+    $default  reduziere mit Regel 24 (argument_expression_list)
+
+
+Zustand 102
+
+   55 conditional_expression: logical_xor_expression '?' expression ':' conditional_expression .
+
+    $default  reduziere mit Regel 55 (conditional_expression)
+
+
+Zustand 103
+
+   14 istate_expression_list: istate_expression_list ',' istate_expression .
+
+    $default  reduziere mit Regel 14 (istate_expression_list)
+
+
+Zustand 104
+
+   15 istate_expression: primary_expression '[' expression_list . ']'
+   17 expression_list: expression_list . ',' primary_expression
+
+    ']'  schiebe und gehe zu Zustand 106 über
+    ','  schiebe und gehe zu Zustand 107 über
+
+
+Zustand 105
+
+   16 expression_list: primary_expression .
+
+    $default  reduziere mit Regel 16 (expression_list)
+
+
+Zustand 106
+
+   15 istate_expression: primary_expression '[' expression_list ']' .
+
+    $default  reduziere mit Regel 15 (istate_expression)
+
+
+Zustand 107
+
+   17 expression_list: expression_list ',' . primary_expression
+
+    VARIABLE  schiebe und gehe zu Zustand 19 über
+    DOUBLE    schiebe und gehe zu Zustand 21 über
+    INTEGER   schiebe und gehe zu Zustand 22 über
+    '('       schiebe und gehe zu Zustand 24 über
+
+    primary_expression  gehe zu Zustand 108 über
+
+
+Zustand 108
+
+   17 expression_list: expression_list ',' primary_expression .
+
+    $default  reduziere mit Regel 17 (expression_list)

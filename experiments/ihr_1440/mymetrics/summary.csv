@@ -1,0 +1,2 @@
+,experiment,total_time,alg_time,nr_of_hits,nr_of_evaluations,rss,uss,user_parameters.time_add_tnf,user_parameters.duration_add_tnf,user_parameters.concentration_tnf,score
+0,ihr_100_test,67782.17961764336,2.6454343795776367,0,100,139243520,126013440,254.0,19.0,0.3337410019000001,314.0

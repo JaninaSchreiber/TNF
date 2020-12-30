@@ -1,0 +1,38 @@
+#! /usr/bin/env bash
+
+# TODO edit the number of processes as required.
+export PROCS=48
+
+# TODO edit QUEUE, WALLTIME, PPN, AND TURNBINE_JOBNAME
+export QUEUE=main
+export WALLTIME=20:59:00
+export PPN=6
+export TURBINE_JOBNAME="${EXPID}_job"
+
+# embed simulation
+EXECUTABLE_SOURCE=$EMEWS_PROJECT_ROOT/data/PhysiBoSSv2/spheroid_TNF_v2
+
+# parameter file which provides the domain for the simulation 
+GA_PARAMS_FILE_OUT=$TURBINE_OUTPUT/tnf_params.json
+
+# parameters of the optimization strategy
+ITERATIONS=20
+REPLICATIONS=3
+STRATEGY='improving_hit-and-run'
+COOLING_SCHEDULE=''
+
+CMD_LINE_ARGS="$* -ni=$ITERATIONS -nv=$REPLICATIONS -st=$STRATEGY -cs=$COOLING_SCHEDULE -exe=$EXECUTABLE_OUT -settings=$DEFAULT_XML_OUT/PhysiCell_settings.xml -ga_parameters=$GA_PARAMS_FILE_OUT"
+
+# set machine to your schedule type (e.g. pbs, slurm, cobalt etc.),
+# or empty for an immediate non-queued unscheduled run
+MACHINE="slurm"
+# MACHINE=""
+
+if [ -n "$MACHINE" ]; then
+  MACHINE="-m $MACHINE"
+fi
+
+# echo's anything following this to standard out
+set -x
+SWIFT_FILE=swift_run_bas.swift
+swift-t -n $PROCS $MACHINE -p -I $EQPY -t f:$EMEWS_PROJECT_ROOT/etc/hosts.txt -r $EQPY $EMEWS_PROJECT_ROOT/swift/$SWIFT_FILE $CMD_LINE_ARGS

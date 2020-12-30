@@ -1,0 +1,10 @@
+TURBINE-SLURM.SH
+
++ srun /usr/bin/tclsh8.6 /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/swift-t-swift_run_bas.NhK.tic hns_geometric_1440 ../data/tnf_params.json -ni=100 -nv=3 -st=hide-and-seek -cs=geometric -exe=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/spheroid_TNF -settings=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/PhysiCell_settings.xml -ga_parameters=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/tnf_params.json
+Parameters: 100,'/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/tnf_params.json', 'hide-and-seek', 'geometric'
+
+EQPy Aborted
+Exited normally
+ADLB Total Elapsed Time: 83030.642
+turbine finalizing at: 83030.639
+Name: x_proposal, dtype: float64

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<MultiCellDS version="0.5" type="snapshot/simulation">
+	<metadata>
+		<software>
+			<name>BioFVM</name>
+			<version>1.1.7</version>
+			<URL>http://BioFVM.MathCancer.org</URL>
+			<creator />
+			<citation />
+			<user />
+		</software>
+		<citation />
+		<current_time units="min">300.000000</current_time>
+		<current_runtime units="sec">160.382339</current_runtime>
+		<created>2020-11-30T05:31:52Z</created>
+		<last_modified>2020-11-30T05:31:52Z</last_modified>
+	</metadata>
+	<microenvironment>
+		<domain name="microenvironment">
+			<mesh type="Cartesian" uniform="true" regular="true" units="micron">
+				<bounding_box type="axis-aligned" units="micron">-500.000000 -500.000000 -500.000000 500.000000 500.000000 500.000000</bounding_box>
+				<x_coordinates delimiter=" ">-492.500000 -477.500000 -462.500000 -447.500000 -432.500000 -417.500000 -402.500000 -387.500000 -372.500000 -357.500000 -342.500000 -327.500000 -312.500000 -297.500000 -282.500000 -267.500000 -252.500000 -237.500000 -222.500000 -207.500000 -192.500000 -177.500000 -162.500000 -147.500000 -132.500000 -117.500000 -102.500000 -87.500000 -72.500000 -57.500000 -42.500000 -27.500000 -12.500000 2.500000 17.500000 32.500000 47.500000 62.500000 77.500000 92.500000 107.500000 122.500000 137.500000 152.500000 167.500000 182.500000 197.500000 212.500000 227.500000 242.500000 257.500000 272.500000 287.500000 302.500000 317.500000 332.500000 347.500000 362.500000 377.500000 392.500000 407.500000 422.500000 437.500000 452.500000 467.500000 482.500000 497.500000</x_coordinates>
+				<y_coordinates delimiter=" ">-492.500000 -477.500000 -462.500000 -447.500000 -432.500000 -417.500000 -402.500000 -387.500000 -372.500000 -357.500000 -342.500000 -327.500000 -312.500000 -297.500000 -282.500000 -267.500000 -252.500000 -237.500000 -222.500000 -207.500000 -192.500000 -177.500000 -162.500000 -147.500000 -132.500000 -117.500000 -102.500000 -87.500000 -72.500000 -57.500000 -42.500000 -27.500000 -12.500000 2.500000 17.500000 32.500000 47.500000 62.500000 77.500000 92.500000 107.500000 122.500000 137.500000 152.500000 167.500000 182.500000 197.500000 212.500000 227.500000 242.500000 257.500000 272.500000 287.500000 302.500000 317.500000 332.500000 347.500000 362.500000 377.500000 392.500000 407.500000 422.500000 437.500000 452.500000 467.500000 482.500000 497.500000</y_coordinates>
+				<z_coordinates delimiter=" ">-492.500000 -477.500000 -462.500000 -447.500000 -432.500000 -417.500000 -402.500000 -387.500000 -372.500000 -357.500000 -342.500000 -327.500000 -312.500000 -297.500000 -282.500000 -267.500000 -252.500000 -237.500000 -222.500000 -207.500000 -192.500000 -177.500000 -162.500000 -147.500000 -132.500000 -117.500000 -102.500000 -87.500000 -72.500000 -57.500000 -42.500000 -27.500000 -12.500000 2.500000 17.500000 32.500000 47.500000 62.500000 77.500000 92.500000 107.500000 122.500000 137.500000 152.500000 167.500000 182.500000 197.500000 212.500000 227.500000 242.500000 257.500000 272.500000 287.500000 302.500000 317.500000 332.500000 347.500000 362.500000 377.500000 392.500000 407.500000 422.500000 437.500000 452.500000 467.500000 482.500000 497.500000</z_coordinates>
+				<voxels type="matlab">
+					<filename>initial_mesh0.mat</filename>
+				</voxels>
+			</mesh>
+			<variables>
+				<variable name="oxygen" units="mmHg" ID="0">
+					<physical_parameter_set>
+						<conditions />
+						<diffusion_coefficient units="micron^2/min">100000.000000</diffusion_coefficient>
+						<decay_rate units="1/min">0.100000</decay_rate>
+					</physical_parameter_set>
+				</variable>
+				<variable name="tnf" units="TNF/um^3" ID="1">
+					<physical_parameter_set>
+						<conditions />
+						<diffusion_coefficient units="micron^2/min">1200.000000</diffusion_coefficient>
+						<decay_rate units="1/min">0.027500</decay_rate>
+					</physical_parameter_set>
+				</variable>
+			</variables>
+			<data type="matlab">
+				<filename>output00000010_microenvironment0.mat</filename>
+			</data>
+		</domain>
+	</microenvironment>
+	<cellular_information>
+		<cell_populations>
+			<cell_population type="individual">
+				<custom>
+					<simplified_data type="matlab" source="BioFVM">
+						<filename>output00000010_cells.mat</filename>
+					</simplified_data>
+					<simplified_data type="matlab" source="PhysiCell">
+						<labels>
+							<label index="0" size="1">ID</label>
+							<label index="1" size="3">position</label>
+							<label index="4" size="1">total_volume</label>
+							<label index="5" size="1">cell_type</label>
+							<label index="6" size="1">cycle_model</label>
+							<label index="7" size="1">current_phase</label>
+							<label index="8" size="1">elapsed_time_in_phase</label>
+							<label index="9" size="1">nuclear_volume</label>
+							<label index="10" size="1">cytoplasmic_volume</label>
+							<label index="11" size="1">fluid_fraction</label>
+							<label index="12" size="1">calcified_fraction</label>
+							<label index="13" size="3">orientation</label>
+							<label index="16" size="1">polarity</label>
+							<label index="17" size="1">migration_speed</label>
+							<label index="18" size="3">motility_vector</label>
+							<label index="21" size="1">migration_bias</label>
+							<label index="22" size="3">motility_bias_direction</label>
+							<label index="25" size="1">persistence_time</label>
+							<label index="26" size="1">motility_reserved</label>
+							<label index="27" size="1">next_physiboss_run</label>
+							<label index="28" size="1">TNFR_binding_rate</label>
+							<label index="29" size="1">TNFR_endocytosis_rate</label>
+							<label index="30" size="1">TNFR_recycling_rate</label>
+							<label index="31" size="1">TNFR_activation_threshold</label>
+							<label index="32" size="1">TNFR_receptors_per_cell</label>
+							<label index="33" size="1">TFN_net_production_rate</label>
+							<label index="34" size="1">tnf_node</label>
+							<label index="35" size="1">fadd_node</label>
+							<label index="36" size="1">nfkb_node</label>
+							<label index="37" size="1">external_tnf</label>
+							<label index="38" size="1">unbound_external_TNFR</label>
+							<label index="39" size="1">bound_external_TNFR</label>
+							<label index="40" size="1">bound_internal_TNFR</label>
+						</labels>
+						<filename>output00000010_cells_physicell.mat</filename>
+					</simplified_data>
+				</custom>
+			</cell_population>
+		</cell_populations>
+	</cellular_information>
+</MultiCellDS>

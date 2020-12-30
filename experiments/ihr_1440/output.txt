@@ -1,0 +1,9 @@
+TURBINE-SLURM.SH
+
++ srun /usr/bin/tclsh8.6 /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/swift-t-swift_run_bas.MRH.tic ihr_100_test ../data/tnf_params.json -ni=100 -nv=3 -st=improving_hit-and-run -cs= -exe=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/spheroid_TNF -settings=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/PhysiCell_settings.xml -ga_parameters=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/tnf_params.json
+Parameters: 100,'/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/tnf_params.json', 'improving_hit-and-run', '{}'
+
+Exited normally
+EQPy Aborted
+ADLB Total Elapsed Time: 67845.652
+turbine finalizing at: 67845.651

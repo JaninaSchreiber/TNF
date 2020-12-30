@@ -1,0 +1,14 @@
+SCRIPT:            /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/swift/swift-t-swift_run_bas.FAZ.tic
+JOB:               12854581
+COMMAND:           /usr/bin/tclsh8.6 /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/swift-t-swift_run_bas.FAZ.tic ihr_8000_final2 ../data/tnf_params.json -ni=20 -nv=3 -st=improving_hit-and-run -cs= -exe=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/spheroid_TNF -settings=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/PhysiCell_settings.xml -ga_parameters=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2/tnf_params.json
+TURBINE_OUTPUT:    /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_8000_final2
+HOSTNAME:          
+SUBMITTED:         11/29/2020 09:34
+PROCS:             48
+NODES:             8
+PPN:               6
+TURBINE_WORKERS:   47
+ADLB_SERVERS:      1
+WALLTIME:          20:59:00
+ADLB_EXHAUST_TIME: 1
+TURBINE_HOME:      /apps/SWIFTT/1.4.3/turbine

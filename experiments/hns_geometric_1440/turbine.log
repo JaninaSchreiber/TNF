@@ -1,0 +1,14 @@
+SCRIPT:            /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/swift/swift-t-swift_run_bas.NhK.tic
+JOB:               12589543
+COMMAND:           /usr/bin/tclsh8.6 /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/swift-t-swift_run_bas.NhK.tic hns_geometric_1440 ../data/tnf_params.json -ni=100 -nv=3 -st=hide-and-seek -cs=geometric -exe=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/spheroid_TNF -settings=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/PhysiCell_settings.xml -ga_parameters=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440/tnf_params.json
+TURBINE_OUTPUT:    /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/hns_geometric_1440
+HOSTNAME:          
+SUBMITTED:         11/20/2020 08:07
+PROCS:             48
+NODES:             8
+PPN:               6
+TURBINE_WORKERS:   47
+ADLB_SERVERS:      1
+WALLTIME:          30:59:00
+ADLB_EXHAUST_TIME: 1
+TURBINE_HOME:      /apps/SWIFTT/1.4.3/turbine

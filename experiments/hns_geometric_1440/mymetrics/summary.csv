@@ -1,0 +1,2 @@
+,experiment,total_time,alg_time,nr_of_hits,nr_of_evaluations,rss,uss,user_parameters.time_add_tnf,user_parameters.duration_add_tnf,user_parameters.concentration_tnf,score
+0,hns_geometric_1440,82967.04702925682,3.1404733657836914,0,100,138960896,125980672,256.0,21.0,0.29634530709999996,296.6666666666667

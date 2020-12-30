@@ -1,0 +1,42 @@
+SCRIPT:            /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/swift/swift-t-swift_run_bas.W8a.tic
+JOB:               12561200
+COMMAND:           /usr/bin/tclsh8.6 /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/swift-t-swift_run_bas.W8a.tic ihr_100_test ../data/tnf_params.json -ni=100 -nv=1 -st=improving hit-and-run -cs= -exe=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/spheroid_TNF -settings=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/PhysiCell_settings.xml -ga_parameters=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/tnf_params.json
+TURBINE_OUTPUT:    /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test
+HOSTNAME:          
+SUBMITTED:         11/19/2020 09:59
+PROCS:             48
+NODES:             8
+PPN:               6
+TURBINE_WORKERS:   47
+ADLB_SERVERS:      1
+WALLTIME:          00:59:00
+ADLB_EXHAUST_TIME: 1
+TURBINE_HOME:      /apps/SWIFTT/1.4.3/turbine
+SCRIPT:            /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/swift/swift-t-swift_run_bas.m2i.tic
+JOB:               12562260
+COMMAND:           /usr/bin/tclsh8.6 /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/swift-t-swift_run_bas.m2i.tic ihr_100_test ../data/tnf_params.json -ni=100 -nv=3 -st=improving hit-and-run -cs= -exe=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/spheroid_TNF -settings=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/PhysiCell_settings.xml -ga_parameters=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/tnf_params.json
+TURBINE_OUTPUT:    /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test
+HOSTNAME:          
+SUBMITTED:         11/19/2020 11:46
+PROCS:             48
+NODES:             8
+PPN:               6
+TURBINE_WORKERS:   47
+ADLB_SERVERS:      1
+WALLTIME:          30:59:00
+ADLB_EXHAUST_TIME: 1
+TURBINE_HOME:      /apps/SWIFTT/1.4.3/turbine
+SCRIPT:            /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/swift/swift-t-swift_run_bas.MRH.tic
+JOB:               12562365
+COMMAND:           /usr/bin/tclsh8.6 /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/swift-t-swift_run_bas.MRH.tic ihr_100_test ../data/tnf_params.json -ni=100 -nv=3 -st=improving_hit-and-run -cs= -exe=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/spheroid_TNF -settings=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/PhysiCell_settings.xml -ga_parameters=/gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test/tnf_params.json
+TURBINE_OUTPUT:    /gpfs/scratch/cns03/cns03363/janina_project/spheroid-tnf-v2-emews/experiments/ihr_100_test
+HOSTNAME:          
+SUBMITTED:         11/19/2020 11:56
+PROCS:             48
+NODES:             8
+PPN:               6
+TURBINE_WORKERS:   47
+ADLB_SERVERS:      1
+WALLTIME:          30:59:00
+ADLB_EXHAUST_TIME: 1
+TURBINE_HOME:      /apps/SWIFTT/1.4.3/turbine
